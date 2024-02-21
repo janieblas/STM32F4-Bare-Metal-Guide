@@ -2,12 +2,19 @@
 
 # Compiler and options configuration
 CC = arm-none-eabi-gcc
-LD = arm-none-eabi-ld
 CFLAGS = -mcpu=cortex-m4 -mthumb -nostdlib -Wl,--no-warn-rwx-segments
-LDFLAGS = -T linker_script.ld
+LDFLAGS = -T Linker_script/linker_script.ld
+
+# Include files
+CPPFLAGS = 	-D STM32F446xx \
+			-I CMSIS/Device/Include \
+			-I CMSIS/Core
 
 # Source files
-SRCS = main.c startup.c
+SRCS = 	Src/main.c \
+		Startup/startup.c \
+		CMSIS/Device/Source/system_stm32f4xx.c
+
 OBJS = $(SRCS:.c=.o)
 
 # Executable name
@@ -16,10 +23,10 @@ TARGET = blink.elf
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJS) -o $@
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
