@@ -1,16 +1,16 @@
-# Makefile para compilar y enlazar el código para STM32F446RE
+# Makefile to compile and link code for STM32F446RE
 
-# Configuración del compilador y opciones
+# Compiler and options configuration
 CC = arm-none-eabi-gcc
 LD = arm-none-eabi-ld
 CFLAGS = -mcpu=cortex-m4 -mthumb -nostdlib -Wl,--no-warn-rwx-segments
 LDFLAGS = -T linker_script.ld
 
-# Archivos fuente
+# Source files
 SRCS = main.c startup.c
 OBJS = $(SRCS:.c=.o)
 
-# Nombre del ejecutable
+# Executable name
 TARGET = blink.elf
 
 all: $(TARGET)
