@@ -7,7 +7,7 @@
 For the exercises, Ubuntu 22.04.3 LTS was used in the VirtualBox virtual machine.
 
 ## TOOLCHAIN
-Toolchain version:arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi
+Toolchain version: arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi
 - [Download](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)
 - [Manual installation](https://askubuntu.com/questions/1243252/how-to-install-arm-none-eabi-gdb-on-ubuntu-20-04-lts-focal-fossa)
 
