@@ -17,3 +17,5 @@ OpenOCD was installed to load programs onto the board.
 [OpenOCD](https://openocd.org/pages/about.html)
 
 To facilitate compilation, Makefiles and CMake are used.
+
+## VSCODE Extensions
