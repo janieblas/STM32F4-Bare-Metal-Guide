@@ -1,3 +1,3 @@
 # SMT32F446RE REPOSITORY
 
-![NUCLEO-F446RE](NUCLEO-F446RE.jpg){width=50%}
+<img src="NUCLEO-F446RE.jpg" alt="NUCLEO-F446RE" style="width:50%;">
