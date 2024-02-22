@@ -35,8 +35,7 @@ Generate the file launch.json inside the .vscode folder. I used this configurati
     ]
 }
 ```
-POSSIBLE PROBLEMS:
-When  installed the toolchan, 
+POSSIBLE PROBLEMS: 
 When I installed the toolchain, I did it manually, so it's necessary to create links to the binaries as needed. If we recall the installation of one, for example:
 ```
 sudo ln -s /usr/share/gcc-arm-none-eabi-YOUR-VERSION/bin/arm-none-eabi-gcc /usr/bin/arm-none-eabi-gcc
