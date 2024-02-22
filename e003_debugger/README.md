@@ -35,6 +35,23 @@ Generate the file launch.json inside the .vscode folder. I used this configurati
     ]
 }
 ```
+POSSIBLE PROBLEMS:
+When  installed the toolchan, 
+When I installed the toolchain, I did it manually, so it's necessary to create links to the binaries as needed. If we recall the installation of one, for example:
+```
+sudo ln -s /usr/share/gcc-arm-none-eabi-YOUR-VERSION/bin/arm-none-eabi-gcc /usr/bin/arm-none-eabi-gcc
+```
+Now we need to create links for the tools used for debugging, which are objdump and nm.
+```
+sudo ln -s /usr/share/gcc-arm-none-eabi-YOUR-VERSION/bin/arm-none-eabi-objdump /usr/bin/arm-none-eabi-objdump
+sudo ln -s /usr/share/gcc-arm-none-eabi-YOUR-VERSION/bin/arm-none-eabi-nm /usr/bin/arm-none-eabi-nm
+```
+To confirm that you can now use them, you can check the version using the following command:
+```
+arm-none-eabi-objdump --version
+arm-none-eabi-nm --version
+```
+If you see the version of each one, everything is fine.
 
 Commands created in the Makefile to execute the code:
 - 'make all'
