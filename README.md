@@ -5,6 +5,7 @@ With this repository, I want to demonstrate how to set up a project to program a
 
 ## STM32F446RE BOARD
 <img src="NUCLEO-F446RE.jpg" alt="NUCLEO-F446RE" style="width:50%;">
+This repository can be adapted to any board in the STM32F4 family.
 
 ## UBUNTU
 For the exercises, Ubuntu 22.04.3 LTS was used in the VirtualBox virtual machine.
