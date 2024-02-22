@@ -1,0 +1,12 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/arm-none-eabi-gcc -fdata-sections;-ffunction-sections;--specs=nano.specs;-Wl,--gc-sections
+Build flags: 
+Id flags:  
+
+The output was:
+1
+/usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/bin/ld: /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/libc_nano.a(libc_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x30): undefined reference to `_exit'
+collect2: error: ld returned 1 exit status
+
+
