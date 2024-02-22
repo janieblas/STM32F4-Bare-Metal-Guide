@@ -6,24 +6,47 @@
 #define STACK_POINTER_INIT_ADDRESS (SRAM_END)
 #define ISR_VECTOR_SIZE_WORDS 114
 
+void Reset_Handler(void);
+void Default_Handler(void);
 
-void reset_handler(void);
-void default_handler(void);
+void NMI_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void HardFault_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void MemManage_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void BusFault_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void UsageFault_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void SVC_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void DebugMon_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void PendSV_Handler(void) __attribute__((weak, alias("Default_Handler")));
+void SysTick_Handler(void) __attribute__((weak, alias("Default_Handler")));
 
-void nmi_handler(void) __attribute__((weak, alias("default_handler")));
 // continue adding device interrupt handlers
 
 uint32_t isr_vector[ISR_VECTOR_SIZE_WORDS] __attribute__((section(".isr_vector"))) = {
   STACK_POINTER_INIT_ADDRESS,
-  (uint32_t)&reset_handler,
-  (uint32_t)&nmi_handler,
+  (uint32_t)&Reset_Handler,
+  (uint32_t)&NMI_Handler,
+  (uint32_t)&HardFault_Handler,
+  (uint32_t)&MemManage_Handler,
+  (uint32_t)&BusFault_Handler,
+  (uint32_t)&UsageFault_Handler,
+  0,
+  0,
+  0,
+  0,
+  (uint32_t)&SVC_Handler,
+  (uint32_t)&DebugMon_Handler,
+  0,
+  (uint32_t)&PendSV_Handler,
+  (uint32_t)&SysTick_Handler
+//External Interrupts
 };
 
 extern uint32_t _etext, _sdata, _edata, _sbss, _ebss, _sidata;
 void main(void);
+void __libc_init_array();
 
 
-void reset_handler(void)
+void Reset_Handler(void)
 {
   // Copy .data from FLASH to SRAM
   uint32_t data_size = (uint32_t)&_edata - (uint32_t)&_sdata;
@@ -44,10 +67,11 @@ void reset_handler(void)
     bss[i] = 0;
   }
   
+  __libc_init_array();
   main();
 }
 
-void default_handler(void)
+void Default_Handler(void)
 {
   while(1);
 }

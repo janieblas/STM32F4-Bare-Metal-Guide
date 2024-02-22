@@ -8,7 +8,8 @@ set(EXECUTABLE ${CMAKE_PROJECT_NAME})
 set(CPU_PARAMETERS
     -mcpu=cortex-m4
     -mthumb
-    -nostdlib
+    #-nostdlib
+    --specs=nano.specs 
     -g
     -O0
     -Wl,--no-warn-rwx-segments)
@@ -18,13 +19,16 @@ set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/Linker_script/linker_script.ld)
 
 # Headers files
 set(INCS
+    Inc
+    CMSIS/Core 
     CMSIS/Device/Include
-    CMSIS/Core
 )
 
 # Source files
 set(SRCS
     Src/main.c
+    Src/syscalls.c
+    Src/usart.c
     Startup/startup.c
     CMSIS/Device/Source/system_stm32f4xx.c
 )
@@ -47,5 +51,6 @@ target_compile_options(${EXECUTABLE} PRIVATE
 
 target_link_options(${EXECUTABLE} PRIVATE
     -T ${LINKER_SCRIPT}
+    -u _printf_float
     ${CPU_PARAMETERS})
 
