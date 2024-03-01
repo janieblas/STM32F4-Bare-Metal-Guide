@@ -3,27 +3,25 @@
 #define SRAM_START (0x20000000U)
 #define SRAM_SIZE (128U * 1024U)
 #define SRAM_END (SRAM_START + SRAM_SIZE)
-#define STACK_POINTER_INIT_ADDRESS (SRAM_END)
-#define ISR_VECTOR_SIZE_WORDS 114
 
 
-void reset_handler(void);
-void default_handler(void);
+void Reset_handler(void);
+void Default_Handler(void);
 
-void nmi_handler(void) __attribute__((weak, alias("default_handler")));
+void Nmi_Handler(void) __attribute__((weak, alias("Default_Handler")));
 // continue adding device interrupt handlers
 
-uint32_t isr_vector[ISR_VECTOR_SIZE_WORDS] __attribute__((section(".isr_vector"))) = {
-  STACK_POINTER_INIT_ADDRESS,
-  (uint32_t)&reset_handler,
-  (uint32_t)&nmi_handler,
+uint32_t isr_vector[] __attribute__((section(".isr_vector"))) = {
+  SRAM_END,
+  (uint32_t)&Reset_handler,
+  (uint32_t)&Nmi_Handler,
 };
 
 extern uint32_t _etext, _sdata, _edata, _sbss, _ebss, _sidata;
 void main(void);
 
 
-void reset_handler(void)
+void Reset_handler(void)
 {
   // Copy .data from FLASH to SRAM
   uint32_t data_size = (uint32_t)&_edata - (uint32_t)&_sdata;
@@ -43,11 +41,11 @@ void reset_handler(void)
   {
     bss[i] = 0;
   }
-  
+  //Call to main
   main();
 }
 
-void default_handler(void)
+void Default_Handler(void)
 {
   while(1);
 }

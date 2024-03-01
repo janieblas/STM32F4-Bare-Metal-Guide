@@ -1,4 +1,4 @@
-ENTRY(reset_handler)
+ENTRY(Reset_handler)
 
 MEMORY
 {
@@ -6,57 +6,45 @@ MEMORY
   SRAM (rwx): ORIGIN = 0x20000000, LENGTH = 128K
 }
 
-SECTIONS
-{
-  .isr_vector :
+SECTIONS 
+{ 
+  .isr_vector : 
   {
-    KEEP(*(.isr_vector))
-  } >FLASH
+    KEEP(*(.isr_vector)) 
+  } >FLASH 
 
-  .text :
-  {
-    . = ALIGN(4);
-		
-    *(.text)
-    *(.text.*)
-    *(.rodata)
-    *(.rodata.*)
-    KEEP(*(.init))
-    KEEP(*(.fini))
-    *(.eh_frame)
-    *(.ARM.exidx)
-		
-    . = ALIGN(4);
-    _etext = .;
-  } >FLASH
+  .text : 
+  { 
+    . = ALIGN(4); 
 
-  _sidata = LOADADDR(.data);
+    *(.text) 
+    *(.rodata) 
 
-  .data :
-  {
-    . = ALIGN(4);
-    _sdata = .;
-		
-    *(.data)
-    *(.data.*)
-    KEEP(*(.init_array))
-    KEEP(*(.fini_array))
+    . = ALIGN(4); 
+    _etext = .; 
+  } >FLASH 
+ 
+  _sidata = LOADADDR(.data); 
 
-    . = ALIGN(4);
-    _edata = .;
-  } >SRAM AT> FLASH
+  .data : 
+  { 
+    . = ALIGN(4); 
+    _sdata = .; 
 
-  .bss :
-  {
-    . = ALIGN(4);
-    _sbss = .;
-    __bss_start__ = _sbss;
-		
-    *(.bss)
-    *(.bss.*)
-		
-    . = ALIGN(4);
-    _ebss = .;
-    __bss_end__ = _ebss;
-  } >SRAM
-}
+    *(.data) 
+
+    . = ALIGN(4); 
+    _edata = .; 
+  } >SRAM AT> FLASH 
+
+  .bss : 
+  { 
+    . = ALIGN(4); 
+    _sbss = .; 
+
+    *(.bss) 
+
+    . = ALIGN(4); 
+    _ebss = .; 
+  } >SRAM 
+} 
