@@ -2,7 +2,6 @@
 
 # Compiler and options configuration
 CC = arm-none-eabi-gcc
-LD = arm-none-eabi-ld
 CFLAGS = -mcpu=cortex-m4 -mthumb -nostdlib -Wl,--no-warn-rwx-segments
 LDFLAGS = -T linker_script.ld
 
