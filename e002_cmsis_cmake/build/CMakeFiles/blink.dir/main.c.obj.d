@@ -1,0 +1,31 @@
+CMakeFiles/blink.dir/main.c.obj: \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/main.c \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/stdint.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/features.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/_newlib_version.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/_intsup.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/stdio.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/_ansi.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/newlib.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/config.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/machine/ieeefp.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/cdefs.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/reent.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/_ansi.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/_types.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/machine/_types.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/lock.h \
+ /usr/share/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/stdio.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Include/stm32f4xx.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Include/stm32f446xx.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Core/core_cm4.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Core/cmsis_version.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Core/cmsis_compiler.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Core/cmsis_gcc.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Core/mpu_armv7.h \
+ /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/CMSIS/Include/system_stm32f4xx.h

@@ -13,19 +13,19 @@ set(CPU_PARAMETERS
     -O0
     -Wl,--no-warn-rwx-segments)
 
-set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/Linker_script/linker_script.ld)
+set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/linker_script.ld)
 
 # Headers files
 set(INCS
-    CMSIS/Device/Include
+    CMSIS/Include
     CMSIS/Core
 )
 
 # Source files
 set(SRCS
-    Src/main.c
-    Startup/startup.c
-    CMSIS/Device/Source/system_stm32f4xx.c
+    main.c
+    startup.c
+    CMSIS/Source/system_stm32f4xx.c
 )
 
 # Executable files
