@@ -27,15 +27,31 @@
    ```powershell
    usbipd list
    ```
-
-   Bind the device:
+   Result:
    ```powershell
-   usbipd bind --busid <DEVICE-ID>
+   PS C:\Users\52644> usbipd list
+   Connected:
+   BUSID  VID:PID    DEVICE  
+   6-3    0483:374b  ST-Link Debug, USB Memmory Divice...  Shared
+   ```
+
+   Bind the device, In this case BUSID is 6-3:
+   ```powershell
+   usbipd bind --busid <BUSID>
+   
+   Result:
+   ```powershell
+   usbipd: info: Device with busid '6-3' was already shared.
    ```
 
    Attach the device to WSL:
    ```powershell
-   usbipd attach --wsl --busid <DEVICE-ID>
+   usbipd attach --wsl --busid <BUSID>
+   ```
+   Result:
+   ```powershell
+  usbipd: info: Using WSL distribution 'Ubuntu-24.04' to attach; the device will be available in all WSL 2 distributions.
+  usbipd: info: Using IP address 172.33.27.1 to reach the host.
    ```
 
 4. **Verify on Ubuntu WSL2**
@@ -44,7 +60,10 @@
    ```bash
    lsusb
    ```
-
+   Result:
+   ```bash
+   Bus 001 Device 002: ID 0483:374b STMicroelectronics ST-LINK/V2.1
+   ```
 ---
 
 ## Troubleshooting
