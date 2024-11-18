@@ -50,8 +50,8 @@
    ```
    Result:
    ```powershell
-  usbipd: info: Using WSL distribution 'Ubuntu-24.04' to attach; the device will be available in all WSL 2 distributions.
-  usbipd: info: Using IP address 172.33.27.1 to reach the host.
+   usbipd: info: Using WSL distribution 'Ubuntu-24.04' to attach; the device will be available in all WSL 2 distributions.
+   usbipd: info: Using IP address 172.33.27.1 to reach the host.
    ```
 
 4. **Verify on Ubuntu WSL2**
