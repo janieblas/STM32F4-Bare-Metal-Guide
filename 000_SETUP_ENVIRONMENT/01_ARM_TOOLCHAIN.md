@@ -11,7 +11,10 @@ Before proceeding, make sure that you have WSL2 installed on your Windows machin
 
 I recommend you that check videos on Youtube for the installation.
 
-### 2. Install Python 3.8
+### 2. Use VSCode (recommended, not required).
+Use VSCode or another text editor with a WSL connection to work. I recommend you that check videos on Youtube.
+
+### 3. Install Python 3.8
 
 The installation of Python 3.8 is necessary because a bug with newer Python versions has been reported, affecting gdb from the ARM toolchain, specifically on Ubuntu 20 onwards. This issue causes Python-related errors when running gdb, such as missing dependencies or issues with the Python environment configuration. The solution to this problem is downgrading to Python 3.8, which resolves these compatibility issues and ensures that gdb runs smoothly without Python errors.
 
@@ -100,8 +103,7 @@ The toolchain relies on certain libraries like `libncurses` and `libtinfo`. Inst
 
 ```bash
 #Ubuntu Terminal
-sudo apt install libncurses-dev
-sudo apt install libtinfo-dev
+sudo apt install libncurses-dev libtinfo-dev
 ```
 
 ---
