@@ -9,5 +9,5 @@ Toolchain version: arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi
 - [Manual installation](https://askubuntu.com/questions/1243252/how-to-install-arm-none-eabi-gdb-on-ubuntu-20-04-lts-focal-fossa)
 
 #### I used the STM32F446RE board
-<img src="NUCLEO-F446RE.jpg" alt="NUCLEO-F446RE" style="width:50%;">
+<img src="NUCLEO-F446RE.jpg" alt="NUCLEO-F446RE" style="width:20%;">
 This repository can be adapted to any board in the STM32F4 family.
