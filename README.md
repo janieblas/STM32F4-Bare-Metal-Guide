@@ -1,6 +1,6 @@
-# SMT32F446RE REPOSITORY
 
-## SUMMARY
+
+### SUMMARY
 With this repository, I want to demonstrate how to set up a project to program an STM32F446RE board without using STM32CubeIDE. This involves using a Linux (Ubuntu) virtual machine and VSCode on Windows with SSH. Starting with a minimal 'bare-metal' example and gradually adding standard libraries to create a more complex project. I hope this can help you in some way.
 
 ## STM32F446RE BOARD
