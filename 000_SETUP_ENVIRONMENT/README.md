@@ -8,7 +8,7 @@ chmod +x toolchain_setup.sh
 ./toolchain_setup.sh
 ```
 
-[!NOTE]
+>[!NOTE]
 By default I use version 13.3 of the ARM toolchain, you can change the version within the script.
 
 -----------------------------------------------------------------------------------------
