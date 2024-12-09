@@ -125,6 +125,25 @@ done
 
 #########################################################################
 
+#OpenOCD
+sudo apt update
+sudo apt install openocd
+
+#########################################################################
+
+#Install USB Support on Ubuntu WSL2
+sudo apt update
+sudo apt install linux-tools-generic hwdata
+sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
+
+#########################################################################
+
+#Install USB utilities
+sudo apt update
+sudo apt install usbutils
+
+#########################################################################
+
 echo -e "${GREEN}>> Toolchain configurado e instalado correctamente. <<${NC}"
 
 # Reiniciar el shell para aplicar cambios
