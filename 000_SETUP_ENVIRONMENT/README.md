@@ -16,7 +16,7 @@ You can continue with the board's connection "[Connect STM32F4xx Board to WSL2 a
 -----------------------------------------------------------------------------------------
 
 
-#### Setup Environment to use ARM Toolchain, WSL2 Ubuntu and STM32F4xx
+#### Setup Environment to use ARM Toolchain, WSL2 Ubuntu and STM32F4xx (step by step)
 Guides to setting up the ARM development environment on Ubuntu, including dependency installation, PATH configuration, and troubleshooting common issues. Steps to connect an STM32F4 board in WSL2 and Ubuntu, covering necessary tools installation and USB connection verification 
 
 Follow the steps:
