@@ -13,6 +13,7 @@ NOTE: By default I use version 13.3 of the ARM toolchain, you can change the ver
 #### Setup Environment to use ARM Toolchain, WSL2 Ubuntu and STM32F4xx
 Guides to setting up the ARM development environment on Ubuntu, including dependency installation, PATH configuration, and troubleshooting common issues. Steps to connect an STM32F4 board in WSL2 and Ubuntu, covering necessary tools installation and USB connection verification
 
+----------------------------------------------------------------------------------------- 
 
 Follow the steps:
 
