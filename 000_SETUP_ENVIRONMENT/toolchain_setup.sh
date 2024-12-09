@@ -1,10 +1,16 @@
 #!/bin/bash
 
-VERSION="13.3.rel1"
+
+# Para cambiar la vercion puedes entrar a la pagina de las verciones de toolchain 
+# de ARM y copiar la direccion de vinculo y pegarlo en la variable TOOLCHAIN_URL
+# tambien cambiar las variables FILENAME y DIRNAME.
+#
+# Toolchain page: https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+
 DEST="/opt"
-TOOLCHAIN_URL="https://developer.arm.com/-/media/Files/downloads/gnu/${VERSION}/binrel/arm-gnu-toolchain-${VERSION}-x86_64-arm-none-eabi.tar.xz"
-FILENAME="arm-gnu-toolchain-${VERSION}-x86_64-arm-none-eabi.tar.xz"
-DIRNAME="arm-gnu-toolchain-${VERSION}-x86_64-arm-none-eabi"
+TOOLCHAIN_URL="https://developer.arm.com/-/media/Files/downloads/gnu/13.3.rel1/binrel/arm-gnu-toolchain-13.3.rel1-x86_64-arm-none-eabi.tar.xz"
+FILENAME="arm-gnu-toolchain-13.3.rel1-x86_64-arm-none-eabi.tar.xz"
+DIRNAME="arm-gnu-toolchain-13.3.rel1-x86_64-arm-none-eabi"
 
 FILEPATH="${DEST}/${FILENAME}"
 
@@ -35,11 +41,18 @@ python3.8 --version
 
 # Descargar el archivo si no existe
 if [ ! -f "$FILEPATH" ]; then
-    echo "Descargando archivo..."
-    sudo wget -P $DEST $TOOLCHAIN_URL
-    echo -e "${GREEN}>> el archivo fue descargado correctamente. <<${NC}"
+    echo -e "${YELLOW}Descargando archivo...${NC}"
+    if sudo wget -P "$DEST" "$TOOLCHAIN_URL"; then
+        echo -e "${GREEN}>> El archivo fue descargado correctamente. <<${NC}"
+    else
+        echo -e "${RED}>> Error: No se pudo descargar el archivo. Verifica la URL o tu conexión a internet. <<${NC}"
+        echo -e "${RED}>> puede que el link este caducado, por lo tanto necesitas entrar a la pagina y actualizar <<${NC}"
+        echo -e "${RED}>> la direccion del vinculo para la variable TOOLCHAIN_URL:<<${NC}"
+        echo -e "${RED}>> Toolchain page: https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads <<${NC}"
+        exit 1
+    fi
 else
-    echo -e "${YELLOW}>> Alerta: El archivo ya existe en esta dirección <<${NC}"
+    echo -e "${YELLOW}>> Alerta: El archivo ya existe en esta dirección: $FILEPATH <<${NC}"
 fi
 
 # Descomprimir el archivo
