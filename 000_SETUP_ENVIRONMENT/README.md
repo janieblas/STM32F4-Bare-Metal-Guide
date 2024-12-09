@@ -1,12 +1,11 @@
 #### QUICK SETUP
 You can run this script on Ubuntu to install everything faster.
-[toolchain_setup.sh]()
+[toolchain_setup.sh](https://github.com/janieblas/STM32F446E_whitout_stm32CubeIDE/tree/rework_readme_main/000_SETUP_ENVIRONMENT/00_QUICK_SETUP)
 
-""
-//Ubuntu
+```Terminal
 chmod +x toolchain_setup.sh
 ./toolchain_setup.sh
-""
+```
 
 #### Setup Environment to use ARM Toolchain, WSL2 Ubuntu and STM32F4xx
 Guides to setting up the ARM development environment on Ubuntu, including dependency installation, PATH configuration, and troubleshooting common issues. Steps to connect an STM32F4 board in WSL2 and Ubuntu, covering necessary tools installation and USB connection verification
