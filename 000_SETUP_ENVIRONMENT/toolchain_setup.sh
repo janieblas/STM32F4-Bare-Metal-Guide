@@ -123,24 +123,46 @@ for cmd in gcc g++ gdb size; do
     fi
 done
 
-#########################################################################
-
-#OpenOCD
-sudo apt update
-sudo apt install openocd
 
 #########################################################################
+# OpenOCD Installation
+echo -e "${GREEN}Instalando OpenOCD...${NC}"
+sudo apt update && sudo apt install -y openocd
 
-#Install USB Support on Ubuntu WSL2
-sudo apt update
-sudo apt install linux-tools-generic hwdata
+echo -e "${GREEN}Verificando instalación de OpenOCD...${NC}"
+if command -v openocd &>/dev/null; then
+    echo -e "${GREEN}>> OpenOCD está instalado: $(openocd --version | head -n 1) <<${NC}"
+else
+    echo -e "${RED}>> Error: OpenOCD no se instaló correctamente. <<${NC}"
+    exit 1
+fi
+
+#########################################################################
+# Install USB Support on Ubuntu WSL2
+echo -e "${GREEN}Instalando soporte USB en Ubuntu WSL2...${NC}"
+sudo apt update && sudo apt install -y linux-tools-generic hwdata
 sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
 
-#########################################################################
+echo -e "${GREEN}Verificando instalación del soporte USB...${NC}"
+if command -v usbip &>/dev/null; then
+    echo -e "${GREEN}>> Soporte USB instalado correctamente: $(usbip --version) <<${NC}"
+else
+    echo -e "${RED}>> Error: El soporte USB no se instaló correctamente. <<${NC}"
+    exit 1
+fi
 
-#Install USB utilities
-sudo apt update
-sudo apt install usbutils
+#########################################################################
+# Install USB utilities
+echo -e "${GREEN}Instalando utilidades USB...${NC}"
+sudo apt update && sudo apt install -y usbutils
+
+echo -e "${GREEN}Verificando instalación de las utilidades USB...${NC}"
+if command -v lsusb &>/dev/null; then
+    echo -e "${GREEN}>> Utilidades USB instaladas correctamente: $(lsusb --version) <<${NC}"
+else
+    echo -e "${RED}>> Error: Las utilidades USB no se instalaron correctamente. <<${NC}"
+    exit 1
+fi
 
 #########################################################################
 
