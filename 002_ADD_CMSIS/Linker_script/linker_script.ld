@@ -1,62 +1,61 @@
-ENTRY(reset_handler)
+ENTRY(Reset_Handler)
 
+/* Highest address of the user mode stack */
+_estack = ORIGIN(SRAM) + LENGTH(SRAM);    /* end of RAM */
+
+/* Specify the memory areas */
 MEMORY
 {
   FLASH (rx): ORIGIN = 0x08000000, LENGTH = 512K
   SRAM (rwx): ORIGIN = 0x20000000, LENGTH = 128K
 }
 
-SECTIONS
-{
-  .isr_vector :
-  {
-    KEEP(*(.isr_vector))
-  } >FLASH
-
-  .text :
+SECTIONS 
+{ 
+/* The startup code goes first into FLASH */
+  .isr_vector : 
   {
     . = ALIGN(4);
-		
-    *(.text)
-    *(.text.*)
-    *(.rodata)
-    *(.rodata.*)
-    KEEP(*(.init))
-    KEEP(*(.fini))
-    *(.eh_frame)
-    *(.ARM.exidx)
-		
+    KEEP(*(.isr_vector)) /* Startup code */
     . = ALIGN(4);
-    _etext = .;
-  } >FLASH
+  } >FLASH 
 
-  _sidata = LOADADDR(.data);
+  .text : 
+  { 
+    . = ALIGN(4); 
+    *(.text) 
+    *(.text*) 
+    *(.rodata) 
+    . = ALIGN(4); 
+    _etext = .; 
+  } >FLASH 
+ 
+  _sidata = LOADADDR(.data); 
 
-  .data :
-  {
-    . = ALIGN(4);
-    _sdata = .;
-		
-    *(.data)
-    *(.data.*)
-    KEEP(*(.init_array))
-    KEEP(*(.fini_array))
+  .data : 
+  { 
+    . = ALIGN(4); 
+    _sdata = .; 
+    *(.data) 
+    . = ALIGN(4); 
+    _edata = .; 
+  } >SRAM AT> FLASH 
 
-    . = ALIGN(4);
-    _edata = .;
-  } >SRAM AT> FLASH
+  .bss : 
+  { 
+    . = ALIGN(4); 
+    _sbss = .; 
+    *(.bss) 
+    . = ALIGN(4); 
+    _ebss = .; 
+  } >SRAM 
 
-  .bss :
-  {
-    . = ALIGN(4);
-    _sbss = .;
-    __bss_start__ = _sbss;
-		
-    *(.bss)
-    *(.bss.*)
-		
-    . = ALIGN(4);
-    _ebss = .;
-    __bss_end__ = _ebss;
-  } >SRAM
-}
+    /* Remove information from the standard libraries */
+    /DISCARD/ :
+    {
+        libc.a ( * )
+        libm.a ( * )
+        libgcc.a ( * )
+        libnosys.a ( * )
+    }
+} 
