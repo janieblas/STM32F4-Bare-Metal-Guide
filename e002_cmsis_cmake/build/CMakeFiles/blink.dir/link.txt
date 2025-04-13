@@ -1,1 +1,0 @@
-/usr/bin/arm-none-eabi-gcc -T /home/janieblas/Documents/repositories/stm32f446_repo/e002_cmsis_cmake/linker_script.ld -mcpu=cortex-m4 -mthumb -nostdlib -g -O0 -Wl,--no-warn-rwx-segments CMakeFiles/blink.dir/main.c.obj CMakeFiles/blink.dir/startup.c.obj CMakeFiles/blink.dir/CMSIS/Source/system_stm32f4xx.c.obj -o blink.elf 

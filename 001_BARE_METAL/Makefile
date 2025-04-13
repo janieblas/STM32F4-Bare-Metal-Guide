@@ -5,12 +5,12 @@ CC = arm-none-eabi-gcc
 AS = arm-none-eabi-as
 CFLAGS = -mcpu=cortex-m4 -mthumb -nostdlib -Wl,--no-warn-rwx-segments
 ASFLAGS = -mcpu=cortex-m4 -mthumb
-LDFLAGS = -T linker_script.ld
+LDFLAGS = -T linker_script.ld -nostdlib
 
 # Source files
 CSRCS = main.c
 ASRCS = startup.s
-OBJS = $(CSRCS:.c=.o) $(ASRCS:.s=.o)
+OBJS = $(ASRCS:.s=.o) $(CSRCS:.c=.o)
 
 # Executable name
 TARGET = blink.elf
