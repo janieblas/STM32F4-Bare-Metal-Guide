@@ -17,7 +17,7 @@ void main(void)
   {
     // Toggle the LED
     GPIOA->ODR ^= (1 << LED_PIN);
-    for (uint32_t i = 0; i < 200000; i++); // Simple delay
+    for (uint32_t i = 0; i < 1000000; i++); // Simple delay
   }
 
 }

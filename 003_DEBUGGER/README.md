@@ -8,7 +8,10 @@ CFLAGS = -mcpu=cortex-m4 -mthumb -nostdlib -g -O0 -Wl,--no-warn-rwx-segments
 
 The options -g and -O0 are GCC compiler options that affect code generation and the information included in the resulting executable. These options are common when you are developing and debugging code.
 
-Download the [OpenOCD](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug) extension in VSCode.
+Download the [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug) extension in VSCode.
+
+!!! warning 
+Open VSCode from the same level as 003_DEBUGGER or move the launch.json file to the root of the project. Otherwise, you might have problems when running the debugger because it won't be able to find the configuration.
 
 Generate the file launch.json inside the .vscode folder. I used this configuration for debugging:
 ```
