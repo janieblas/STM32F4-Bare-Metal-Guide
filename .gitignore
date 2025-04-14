@@ -41,7 +41,7 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 
-# Otros # Otros
+# Otros 
 *.bak
 *.tmp
 *.old
