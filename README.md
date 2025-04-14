@@ -1,4 +1,3 @@
-
 ### SETUP ENVIRONMENT
 [000_SETUP_ENVIRONMENT](https://github.com/janieblas/STM32F446E_whitout_stm32CubeIDE/tree/main/000_SETUP_ENVIRONMENT)
 
@@ -15,4 +14,14 @@ With this repository, I want to demonstrate how to set up a project to program a
 This repository can be adapted to any board in the STM32F4 family.
 
 <img src="NUCLEO-F446RE.jpg" alt="NUCLEO-F446RE" style="width:35%;">
+
+### Project Stages
+
+| Stage | Description | Link |
+|-------|-------------|------|
+| Bare Metal | Basic project setup with minimal code. Includes startup code, linker script, and a simple LED blink example. Shows how to compile and flash without any HAL or libraries. | [001_BARE_METAL](https://github.com/janieblas/STM32F446E_whitout_stm32CubeIDE/tree/main/001_BARE_METAL) |
+| CMSIS Integration | Adds ARM CMSIS support for hardware abstraction. Includes proper initialization, register definitions, and standardized peripheral access. Makes code more portable and maintainable. | [002_ADD_CMSIS](https://github.com/janieblas/STM32F446E_whitout_stm32CubeIDE/tree/main/002_ADD_CMSIS) |
+| Debugger Setup | Configures debugging support using OpenOCD and GDB. Shows how to set breakpoints, inspect variables, and debug your code in real-time. Essential for development and troubleshooting. | [003_DEBUGGER](https://github.com/janieblas/STM32F446E_whitout_stm32CubeIDE/tree/main/003_DEBUGGER) |
+
+Each stage builds upon the previous one, gradually introducing more functionality while maintaining a clear understanding of the underlying system.
 
