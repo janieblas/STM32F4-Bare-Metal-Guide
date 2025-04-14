@@ -10,7 +10,7 @@ The options -g and -O0 are GCC compiler options that affect code generation and 
 
 Download the [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug) extension in VSCode.
 
-!!! warning 
+>[!NOTE]
 Open VSCode from the same level as 003_DEBUGGER or move the launch.json file to the root of the project. Otherwise, you might have problems when running the debugger because it won't be able to find the configuration.
 
 Generate the file launch.json inside the .vscode folder. I used this configuration for debugging:
