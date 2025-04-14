@@ -45,3 +45,5 @@ Makefile
 *.bak
 *.tmp
 *.old
+
+# Carpetas de compilación
