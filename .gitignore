@@ -1,0 +1,47 @@
+# Archivos binarios STM32
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+*.axf
+
+# Archivos objetos
+*.o
+*.a
+*.out
+
+# Archivos de log o debug
+*.log
+*.d
+*.dep
+
+# Carpetas de compilación
+build/
+Build/
+output/
+Debug/
+Release/
+
+# Archivos temporales
+*.swp
+*.swo
+*.swd
+
+# Archivos generados por IDEs
+.vscode/
+.idea/
+*.launch
+*.cproject
+*.project
+
+# Archivos por cmake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Otros
+*.bak
+*.tmp
+*.old
