@@ -5,19 +5,27 @@ CC = arm-none-eabi-gcc
 AS = arm-none-eabi-as
 CFLAGS = -mcpu=cortex-m4 -mthumb -g -O0 -Wl,--no-warn-rwx-segments
 ASFLAGS = -mcpu=cortex-m4 -mthumb
-LDFLAGS = -T Linker_script/linker_script.ld -specs=nosys.specs -specs=nano.specs -u _printf_float
+LDFLAGS = -T Drivers/Linker_script/linker_script.ld -specs=nosys.specs -specs=nano.specs -u _printf_float
 
 # Include files
 CPPFLAGS = 	-D STM32F446xx \
-			-I CMSIS/Device/Include \
-			-I CMSIS/Core \
-			-I Inc
+			-I Drivers/CMSIS/Device/Include \
+			-I Drivers/CMSIS/Core \
+			-I Inc \
+			-I Drivers/stm32f4xx_hal_driver/Inc
 
 # Source files
 SRCS = 	Src/main.c \
-		CMSIS/Device/Source/system_stm32f4xx.c \
 		Src/syscalls.c \
-		Src/usart.c
+		Src/usart.c \
+        Src/stm32f4xx_it.c \
+		Drivers/CMSIS/Device/Source/system_stm32f4xx.c \
+        Drivers/stm32f4xx_hal_driver/Src/stm32f4xx_hal.c \
+		Drivers/stm32f4xx_hal_driver/Src/stm32f4xx_hal_cortex.c \
+        Drivers/stm32f4xx_hal_driver/Src/stm32f4xx_hal_rcc.c \
+		Drivers/stm32f4xx_hal_driver/Src/stm32f4xx_hal_rcc_ex.c \
+        Drivers/stm32f4xx_hal_driver/Src/stm32f4xx_hal_gpio.c 
+#        Drivers/stm32f4xx_hal_driver/Src/stm32f4xx_hal_uart.c 
 
 ASRCS = Startup/startup.s
 
