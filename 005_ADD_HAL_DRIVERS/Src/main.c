@@ -26,3 +26,5 @@ void main(void)
     for (uint32_t i = 0; i < 600000; i++); // Simple delay
   }
 }
+
+//test
