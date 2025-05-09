@@ -46,4 +46,5 @@ Makefile
 *.tmp
 *.old
 
-#test
+#gitignore
+*.gitignore
