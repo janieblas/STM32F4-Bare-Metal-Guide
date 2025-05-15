@@ -14,21 +14,21 @@
 
 void main(void)
 {
-  // Habilitar el reloj para GPIOA
+  // Enable clock for GPIOA
   *RCC_AHB1ENR |= (1 << RCC_AHB1ENR_GPIOAEN);
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   GPIO_InitStruct.Pin = GPIO_PIN_5;             // Pin 5
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;   // Salida push-pull
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM; // Velocidad media
-  GPIO_InitStruct.Pull = GPIO_NOPULL;           // Sin resistencias
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;   // Output push-pull
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM; // Medium speed
+  GPIO_InitStruct.Pull = GPIO_NOPULL;           // No pull-up or pull-down
   
-  DIY_GPIO_Init(GPIOA, &GPIO_InitStruct);       // Configurar el pin PA5
+  DIY_GPIO_Init(GPIOA, &GPIO_InitStruct);       // Configure pin PA5
 
   while(1){
-    DIY_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Encender LED
-    for (volatile int i = 0; i < 2000000; i++); // Esperar
-    DIY_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET); // Apagar LED
-    for (volatile int i = 0; i < 2000000; i++); // Esperar
+    DIY_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Turn LED on
+    for (volatile int i = 0; i < 1000000; i++); // Wait
+    DIY_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET); // Turn LED off
+    for (volatile int i = 0; i < 1000000; i++); // Wait
   }
 }

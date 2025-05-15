@@ -1,7 +1,7 @@
 #ifndef DIY_GPIO_H
 #define DIY_GPIO_H
 
-/* Definiciones de pines */
+/* Pin definitions */
 #define GPIO_PIN_0                 ((uint16_t)0x0001)
 #define GPIO_PIN_1                 ((uint16_t)0x0002)
 #define GPIO_PIN_2                 ((uint16_t)0x0004)
@@ -19,11 +19,11 @@
 #define GPIO_PIN_14                ((uint16_t)0x4000)
 #define GPIO_PIN_15                ((uint16_t)0x8000)
 
-/* Estados del pin */
+/* Pin states */
 #define GPIO_PIN_RESET             0
 #define GPIO_PIN_SET               1
 
-/* Modos de funcionamiento */
+/* Operating modes */
 #define GPIO_MODE_INPUT            0x00U
 #define GPIO_MODE_OUTPUT_PP        0x01U
 #define GPIO_MODE_OUTPUT_OD        0x11U
@@ -36,7 +36,7 @@
 #define GPIO_PULLUP                0x01U
 #define GPIO_PULLDOWN              0x02U
 
-/* Velocidades */
+/* Speeds */
 #define GPIO_SPEED_FREQ_LOW        0x00U
 #define GPIO_SPEED_FREQ_MEDIUM     0x01U
 #define GPIO_SPEED_FREQ_HIGH       0x02U
@@ -44,20 +44,20 @@
 
 typedef struct
 {
-    uint32_t Pin;       // Pines a configurar (ej. GPIO_PIN_5)
-    uint32_t Mode;      // Modo: entrada, salida, alternate, analog
-                                            // MODER       Configura el modo del pin                        2 bits
-                                            //             00: Entrada, 01: Salida, 10: Alternate, 11: Analógico
+    uint32_t Pin;       // Pins to configure (e.g. GPIO_PIN_5)
+    uint32_t Mode;      // Mode: input, output, alternate, analog
+                        // MODER       Configures the pin mode                        2 bits
+                        //             00: Input, 01: Output, 10: Alternate, 11: Analog
     uint32_t Pull;      // Pull-up / Pull-down
-                                            // PUPDR       Configura resistencias internas                  2 bits
-                                            //             00: Sin pull-up/down, 01: Pull-up, 10: Pull-down, 11: Reservado
-    uint32_t Speed;     // Velocidad de salida
-                                            // OSPEEDR     Configura la velocidad del pin                   2 bits
-                                            //             00: Baja, 01: Media, 10: Alta, 11: Muy alta
+                        // PUPDR       Configures internal resistors                  2 bits
+                        //             00: No pull-up/down, 01: Pull-up, 10: Pull-down, 11: Reserved
+    uint32_t Speed;     // Output speed
+                        // OSPEEDR     Configures the pin speed                       2 bits
+                        //             00: Low, 01: Medium, 10: High, 11: Very high
 }GPIO_InitTypeDef;
 
 
-/* Prototipos de funciones */
+/* Function prototypes */
 void DIY_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init);
 void DIY_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint8_t PinState);
 uint8_t DIY_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
