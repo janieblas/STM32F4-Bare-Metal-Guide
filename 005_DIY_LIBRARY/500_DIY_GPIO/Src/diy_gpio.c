@@ -12,33 +12,7 @@
 * PARÁMETROS:
 * - GPIO_TypeDef *GPIOx: Puntero al puerto GPIO a configurar (GPIOA, GPIOB, etc.)
 * - GPIO_InitTypeDef *GPIO_Init: Estructura con la configuración deseada para los pines
-*
-* REGISTROS UTILIZADOS:
-* Registro    Función                                          Bits por pin
-* -----------------------------------------------------------------------------
-* MODER       Configura el modo del pin                        2 bits
-*             00: Entrada, 01: Salida, 10: Alternate, 11: Analógico
-*
-* OTYPER      Configura el tipo de salida                      1 bit
-*             0: Push-pull (por defecto), 1: Open-drain
-*
-* OSPEEDR     Configura la velocidad del pin                   2 bits
-*             00: Baja, 01: Media, 10: Alta, 11: Muy alta
-*
-* PUPDR       Configura resistencias internas                  2 bits
-*             00: Sin pull-up/down, 01: Pull-up, 10: Pull-down, 11: Reservado
-*
-* EJEMPLO DE USO:
-* Para configurar el pin PA5 como salida push-pull, velocidad media y sin resistencias:
-*
-* GPIO_InitTypeDef GPIO_InitStruct = {0};
-* GPIO_InitStruct.Pin = GPIO_PIN_5;             // Pin 5
-* GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;   // Salida push-pull
-* GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM; // Velocidad media
-* GPIO_InitStruct.Pull = GPIO_NOPULL;           // Sin resistencias
-* DIY_GPIO_Init(GPIOA, &GPIO_InitStruct);       // Configurar el pin PA5
 */
-
 void DIY_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init)
 {
     uint32_t position;
@@ -84,7 +58,63 @@ void DIY_GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_InitTypeDef *GPIO_Init)
     }
 }
 
+/*
+* DIY_GPIO_WritePin - Función personalizada para escribir el estado de un pin GPIO en STM32F446RE
+* 
+* Esta función permite establecer el estado lógico (alto o bajo) de un pin específico de un puerto GPIO,
+* utilizando directamente los registros del microcontrolador a través de CMSIS.
+*
+* PARÁMETROS:
+* - GPIO_TypeDef *GPIOx: Puntero al puerto GPIO donde se encuentra el pin (GPIOA, GPIOB, etc.)
+* - uint16_t GPIO_Pin: Número de pin a modificar (puede ser una máscara, ej. GPIO_PIN_0)
+* - uint8_t PinState: Estado a escribir en el pin (GPIO_PIN_SET o GPIO_PIN_RESET)
+*/
+void DIY_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint8_t PinState){
+    if (PinState == GPIO_PIN_SET)
+    {
+        GPIOx->BSRR = GPIO_Pin; // Set pin
+    }
+    else
+    {
+        GPIOx->BSRR = (uint32_t)GPIO_Pin << 16U; // Reset pin
+    }
+}
 
-void DIY_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint8_t PinState){}
-uint8_t DIY_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin){}
-void DIY_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin){}
+/*
+* DIY_GPIO_ReadPin - Función personalizada para leer el estado de un pin GPIO en STM32F446RE
+* 
+* Esta función permite leer el estado lógico (alto o bajo) de un pin específico de un puerto GPIO,
+* utilizando directamente los registros del microcontrolador a través de CMSIS.
+*
+* PARÁMETROS:
+* - GPIO_TypeDef *GPIOx: Puntero al puerto GPIO a leer (GPIOA, GPIOB, etc.)
+* - uint16_t GPIO_Pin: Número de pin a leer (puede ser una máscara, ej. GPIO_PIN_0)
+*
+* RETORNO:
+* - uint8_t: GPIO_PIN_SET si el pin está en alto, GPIO_PIN_RESET si está en bajo
+*/
+uint8_t DIY_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin){
+    uint8_t bitstatus = (uint8_t)(GPIOx->IDR & GPIO_Pin); // Read pin
+    if (bitstatus != 0)
+    {
+        return GPIO_PIN_SET; // Pin is set
+    }
+    else
+    {
+        return GPIO_PIN_RESET; // Pin is reset
+    }
+}
+
+/*
+* DIY_GPIO_TogglePin - Función personalizada para alternar el estado de un pin GPIO en STM32F446RE
+* 
+* Esta función permite invertir el estado lógico (alto o bajo) de un pin específico de un puerto GPIO,
+* utilizando directamente los registros del microcontrolador a través de CMSIS.
+*
+* PARÁMETROS:
+* - GPIO_TypeDef *GPIOx: Puntero al puerto GPIO donde se encuentra el pin (GPIOA, GPIOB, etc.)
+* - uint16_t GPIO_Pin: Número de pin a alternar (puede ser una máscara, ej. GPIO_PIN_0)
+*/
+void DIY_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin){
+    GPIOx->ODR ^= GPIO_Pin; // Toggle pin       
+}
